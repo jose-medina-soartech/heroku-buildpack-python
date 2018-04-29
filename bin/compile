@@ -228,7 +228,7 @@ set_env LD_LIBRARY_PATH "\$HOME/.heroku/vendor/lib:\$HOME/.heroku/python/lib:\$L
 
 set_default_env LANG en_US.UTF-8
 set_default_env PYTHONHASHSEED random
-set_default_env PYTHONPATH "\$HOME"
+set_default_env PYTHONPATH "\$HOME/.heroku/python/bin:\$PATH"
 
 # python expects to be in /app, if at runtime, it is not, set
 # up symlinks... this can occur when the subdir buildpack is used
