@@ -24,6 +24,7 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         mcount "failure.none-version"
     fi
 
+    apt-get install sudo
     sudo mount -o remount,rw /
     sudo apt-get update && apt-get install -y libsm6 libxext6 libxrender1 libsm-dev 
     /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements.txt" --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
