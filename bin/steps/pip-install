@@ -23,9 +23,9 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
     if grep -q '==0.0.0' requirements.txt; then
         mcount "failure.none-version"
     fi
-    
-    mount -o remount,rw /
-    apt-get update && apt-get install -y libsm6 libxext6 libxrender1 libsm-dev 
+
+    sudo mount -o remount,rw /
+    sudo apt-get update && apt-get install -y libsm6 libxext6 libxrender1 libsm-dev 
     /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements.txt" --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
     PIP_STATUS="${PIPESTATUS[0]}"
     set -e
